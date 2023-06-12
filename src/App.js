@@ -1,5 +1,5 @@
 import Header from "./components/Header/header";
-import Hero from "./components/Hero/hero";
+// import Hero from "./components/Hero/hero";
 import {  Routes, Route } from "react-router-dom";
  import './components/css/general.css';
  import './components/css/queries.css';
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <Header></Header>
-    <Hero></Hero>
+    {/* <Hero></Hero> */}
      <Routes>
       <Route exact="/" element={Header}/>
      </Routes>
