@@ -1,12 +1,12 @@
 import React from 'react'
 import {  NavLink } from "react-router-dom";
-import logo from "https://i.ibb.co/t3tXx5M/omnifood-logo.png../../img/omnifood-logo.png" ;
+// import logo from "https://i.ibb.co/t3tXx5M/omnifood-logo.png../../img/omnifood-logo.png" ;
 function Header() {
   return (
     <header id="header" class="header">
-    <NavLink to="/">
+    {/* <NavLink to="/">
       <img class="logo" alt="Omnifood logo" src= {logo} />
-    </NavLink>
+    </NavLink> */}
     <nav class="main-nav">
       <ul class="main-nav-list">
         <li><NavLink to="/" class="main-nav-link"  >How it works</NavLink></li>
