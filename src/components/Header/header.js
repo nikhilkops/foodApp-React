@@ -1,6 +1,7 @@
 import React from 'react'
 import {  NavLink } from "react-router-dom";
 import logo from "https://i.ibb.co/t3tXx5M/omnifood-logo.png../../img/omnifood-logo.png" ;
+// sd
 function Header() {
   return (
     <header id="header" class="header">
