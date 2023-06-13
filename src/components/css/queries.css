@@ -127,9 +127,11 @@ using pixel will not adjust to useer font size setting and also not to user zomm
     margin-top:2.4rem
   }
 /* Mobile */
-  .btn-mobile-nav{
-    display:block;
-  }
+.btn-mobile-nav{
+   display:block;
+}
+ 
+ 
 
   .main-nav{
     background-color: #ffffff72;

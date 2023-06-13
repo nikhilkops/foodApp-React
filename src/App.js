@@ -5,6 +5,7 @@ import {  Routes, Route } from "react-router-dom";
  import './components/css/queries.css';
  import './components/css/style.css';
 function App() {
+  console.log(__dirname) ;
   return (
     <>
     <Header></Header>

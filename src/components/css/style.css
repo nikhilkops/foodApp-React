@@ -29,9 +29,11 @@
 }
 
 .main-nav-link:link,
-.main-nav-link:visited {
+.main-nav-link:visited,
+.main-nav-link-active
+ {
   display: inline-block;
-  text-decoration: none;
+  text-decoration: none; 
   color: #333;
   font-weight: 500;
   font-size: 1.8rem;
@@ -64,6 +66,8 @@
   cursor:pointer;
 
   display:none ;
+
+  z-index:1
 }
 
 .icon-mobile-nav
