@@ -14,9 +14,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack ./src/index.js ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +36,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/8855cbf7-dfc2-4c12-87a3-fb83abaf9aac/deploy-status)](https://app.netlify.com/sites/omnifood-nikhilverma/deploys)",
+  "main": "index.js",
+  "devDependencies": {
+    "webpack": "^5.86.0"
+  },
+  "author": "",
+  "license": "ISC"
 }
