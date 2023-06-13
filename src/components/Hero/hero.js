@@ -38,7 +38,8 @@ function Hero() {
       </div>
       <div class="hero-img-box">
         <img
-          src="img/hero.png"
+          src="https://i.ibb.co/KFpFDP2/hero.png" 
+
           class="hero-img"
           alt="Woman enjoying food, meals in storage container, and food bowls on a table"
         />
