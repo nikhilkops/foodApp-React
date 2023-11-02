@@ -1,5 +1,10 @@
-import MealsImage from './MealsImage'
+import MealsImage from "./MealsImage";
 import { NavLink } from "react-router-dom";
+import DietList from "./dietsList";
+import { BsCheck2Circle } from "react-icons/bs";
+import {AiOutlineFire} from "react-icons/ai"
+import {IoRestaurantOutline} from 'react-icons/io5'
+import { BiStar } from "react-icons/bi";
 function Meals() {
   return (
     <section class="section-meals">
@@ -20,22 +25,19 @@ function Meals() {
             <p class="meal-title">Japanese Gyozas</p>
             <ul class="meal-attributes">
               <li class="meal-attribute">
-                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                <AiOutlineFire />
                 <span>
                   <strong>650</strong> calories
                 </span>
               </li>
               <li class="meal-attribute">
-                <ion-icon
-                  class="meal-icon"
-                  name="restaurant-outline"
-                ></ion-icon>
+                <IoRestaurantOutline />
                 <span>
                   NutriScore &reg; <strong>74</strong>
                 </span>
               </li>
               <li class="meal-attribute">
-                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                <BiStar/>
                 <span>
                   <strong>4.9</strong> rating (537)
                 </span>
@@ -80,53 +82,25 @@ function Meals() {
 
         <div class="diets">
           <h3 class="heading-tertiary">Works with any diet:</h3>
-          <ul class="list">
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Vegetarian</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Vegan</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Pescatarian</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Gluten-free</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Lactose-free</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Keto</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Paleo</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Low FODMAP</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Kid-friendly</span>
-            </li>
+          <ul class="list meal-list">
+            {DietList.map((diet) => {
+              return (
+                <li class="list-item">
+                  <BsCheck2Circle color="#37e913" />
+                  <span>{diet}</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
 
       <div class="container all-recipes">
-        <NavLink to='/' class="link">
+        <NavLink to="/" class="link">
           See all recipes &rarr;
         </NavLink>
       </div>
     </section>
   );
 }
-export default Meals
+export default Meals;

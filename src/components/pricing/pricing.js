@@ -1,3 +1,10 @@
+import { BsCheck2Circle } from "react-icons/bs";
+import { IoMdNutrition } from "react-icons/io";
+import { BiLeaf } from "react-icons/bi";
+import { FaInfinity } from "react-icons/fa";
+import { RxCrossCircled } from "react-icons/rx";
+import PricingPlan from "./pricingPlan";
+import { NavLink } from "react-router-dom";
 function pricing() {
   return (
     <section class="section-pricing">
@@ -7,74 +14,55 @@ function pricing() {
       </div>
 
       <div class="container grid grid--2-cols margin-bottom-md">
-        <div class="pricing-plan pricing-plan--starter">
-          <header class="plan-header">
-            <p class="plan-name">Starter</p>
-            <p class="plan-price">
-              <span>$</span>399
-            </p>
-            <p class="plan-text">per month. That's just $13 per meal!</p>
-          </header>
-          <ul class="list">
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>1 meal per day</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Order from 11am to 9pm</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Delivery is free</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="close-outline"></ion-icon>
-            </li>
-          </ul>
-          <div class="plan-sing-up">
-            <a href="#" class="btn btn--full">
-              Start eating well
-            </a>
-          </div>
-        </div>
-
-        <div class="pricing-plan pricing-plan--complete">
-          <header class="plan-header">
-            <p class="plan-name">Complete</p>
-            <p class="plan-price">
-              <span>$</span>649
-            </p>
-            <p class="plan-text">per month. That's just $11 per meal!</p>
-          </header>
-          <ul class="list">
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>
-                <strong>2 meals</strong> per day
-              </span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>
-                Order <strong>24/7</strong>
-              </span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Delivery is free</span>
-            </li>
-            <li class="list-item">
-              <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-              <span>Get access to latest recipes</span>
-            </li>
-          </ul>
-          <div class="plan-sing-up">
-            <a href="#" class="btn btn--full">
-              Start eating well
-            </a>
-          </div>
-        </div>
+        {Object.keys(PricingPlan).map((key) => {
+          const plan = PricingPlan[key];
+          return (
+            <div
+              class={
+                plan["isComplete"] === `0`
+                  ? "pricing-plan pricing-plan--starter"
+                  : "pricing-plan pricing-plan--complete"
+              }
+            >
+              <header class="plan-header">
+                <p class="plan-name">{plan["planType"]}</p>
+                <p class="plan-price">
+                  <span>$</span>
+                  {plan["pricing"]}
+                </p>
+                <p class="plan-text">
+                  per month. That's just ${plan["permonth"]} per meal!
+                </p>
+              </header>
+              <ul class="list">
+                {plan["featuresGreen"]?.map((val) => {
+                  return (
+                    <li class="list-item">
+                      <BsCheck2Circle color="#37e913" />
+                      <span>{val} </span>
+                    </li>
+                  );
+                })}
+                {plan["featuresRed"]?.map((val) => {
+                  return (
+                    <li class="list-item">
+                      <RxCrossCircled color="#C70039" />
+                      <span>{val} </span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div class="plan-sing-up">
+                <NavLink to="/" class="link">
+                   <a   class="btn btn--full">
+                  Start eating well
+                </a>
+                </NavLink>
+               
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div class="container grid">
@@ -86,7 +74,7 @@ function pricing() {
 
       <div class="container grid grid--4-cols">
         <div class="feature">
-          <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
+          <FaInfinity />
           <p class="feature-title">Never cook again!</p>
           <p class="feature-text">
             Our subscriptions cover 365 days per year, even including major
@@ -94,7 +82,7 @@ function pricing() {
           </p>
         </div>
         <div class="feature">
-          <ion-icon class="feature-icon" name="nutrition-outline"></ion-icon>
+          <IoMdNutrition />
           <p class="feature-title">Local and organic</p>
           <p class="feature-text">
             Our cooks only use local, fresh, and organic products to prepare
@@ -102,7 +90,7 @@ function pricing() {
           </p>
         </div>
         <div class="feature">
-          <ion-icon class="feature-icon" name="leaf-outline"></ion-icon>
+          <BiLeaf />
           <p class="feature-title">No waste</p>
           <p class="feature-text">
             All our partners only use reusable containers to package all your
@@ -121,4 +109,4 @@ function pricing() {
     </section>
   );
 }
-export default pricing
+export default pricing;
