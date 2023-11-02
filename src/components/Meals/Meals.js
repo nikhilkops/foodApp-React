@@ -1,4 +1,5 @@
 import MealsImage from './MealsImage'
+import { NavLink } from "react-router-dom";
 function Meals() {
   return (
     <section class="section-meals">
@@ -121,9 +122,9 @@ function Meals() {
       </div>
 
       <div class="container all-recipes">
-        <a href="#" class="link">
+        <NavLink to='/' class="link">
           See all recipes &rarr;
-        </a>
+        </NavLink>
       </div>
     </section>
   );
