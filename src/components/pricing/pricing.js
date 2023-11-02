@@ -1,9 +1,5 @@
-import { BsCheck2Circle } from "react-icons/bs";
-import { IoMdNutrition } from "react-icons/io";
-import { BiLeaf } from "react-icons/bi";
-import { FaInfinity } from "react-icons/fa";
-import { RxCrossCircled } from "react-icons/rx";
-import {AiOutlinePauseCircle} from 'react-icons/ai'
+import { BsCheck2Circle } from "react-icons/bs"; 
+import { RxCrossCircled } from "react-icons/rx"; 
 import PricingPlan from "./pricingPlan";
 import PricingFeatures from "./pricingFeatures";
 // import { NavLink } from "react-router-dom";
