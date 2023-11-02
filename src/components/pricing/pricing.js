@@ -4,7 +4,7 @@ import { BiLeaf } from "react-icons/bi";
 import { FaInfinity } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import PricingPlan from "./pricingPlan";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 function pricing() {
   return (
     <section class="section-pricing">
