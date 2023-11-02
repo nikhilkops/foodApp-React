@@ -304,6 +304,7 @@ strong {
 }
 
 .pricing-feature-icon{
-  font-size: 48px;
-  color:#e67e22
+  font-size: 6rem;
+  color:#e67e22;
+  padding-bottom:1rem
 }
