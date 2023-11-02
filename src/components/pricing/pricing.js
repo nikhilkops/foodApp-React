@@ -3,7 +3,9 @@ import { IoMdNutrition } from "react-icons/io";
 import { BiLeaf } from "react-icons/bi";
 import { FaInfinity } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
+import {AiOutlinePauseCircle} from 'react-icons/ai'
 import PricingPlan from "./pricingPlan";
+import PricingFeatures from "./pricingFeatures";
 // import { NavLink } from "react-router-dom";
 function pricing() {
   return (
@@ -58,7 +60,6 @@ function pricing() {
                   Start eating well
                 </a>
                 </NavLink> */}
-               
               </div>
             </div>
           );
@@ -73,38 +74,22 @@ function pricing() {
       </div>
 
       <div class="container grid grid--4-cols">
-        <div class="feature">
-          <FaInfinity />
-          <p class="feature-title">Never cook again!</p>
-          <p class="feature-text">
-            Our subscriptions cover 365 days per year, even including major
-            holidays.
-          </p>
-        </div>
-        <div class="feature">
-          <IoMdNutrition />
-          <p class="feature-title">Local and organic</p>
-          <p class="feature-text">
-            Our cooks only use local, fresh, and organic products to prepare
-            your meals.
-          </p>
-        </div>
-        <div class="feature">
-          <BiLeaf />
-          <p class="feature-title">No waste</p>
-          <p class="feature-text">
-            All our partners only use reusable containers to package all your
-            meals.
-          </p>
-        </div>
-        <div class="feature">
-          <ion-icon class="feature-icon" name="pause-outline"></ion-icon>
-          <p class="feature-title">Pause anytime</p>
-          <p class="feature-text">
-            Going on vacation? Just pause your subscription, and we refund
-            unused days.
-          </p>
-        </div>
+
+      {
+        Object.keys(PricingFeatures).map((key)=>{
+          const feature = PricingFeatures[key]
+          return (
+            <div class="feature">
+              {feature["icon"]}
+              <p class="feature-title">{feature["title"]}</p>
+              <p class="feature-text">
+                {feature["featureText"]}
+              </p>
+            </div>
+          );
+        })
+      }
+        
       </div>
     </section>
   );

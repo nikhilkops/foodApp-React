@@ -302,3 +302,8 @@ strong {
 .meal-list{
   padding-left: 0;
 }
+
+.pricing-feature-icon{
+  font-size: 48px;
+  color:#e67e22
+}
