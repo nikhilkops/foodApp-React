@@ -53,11 +53,11 @@ function pricing() {
                 })}
               </ul>
               <div class="plan-sing-up">
-                <NavLink to="/" class="link">
+                {/* <NavLink to="/" class="link">
                    <a   class="btn btn--full">
                   Start eating well
                 </a>
-                </NavLink>
+                </NavLink> */}
                
               </div>
             </div>
