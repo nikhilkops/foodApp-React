@@ -1,10 +1,7 @@
-import MealsImage from "./MealsImage";
 import { NavLink } from "react-router-dom";
 import DietList from "./dietsList";
 import { BsCheck2Circle } from "react-icons/bs";
-import { AiOutlineFire } from "react-icons/ai";
-import { IoRestaurantOutline } from "react-icons/io5";
-import { BiStar } from "react-icons/bi";
+ 
 import MealCard from "./MealCard";
 function Meals() {
   return (
