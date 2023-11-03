@@ -6,7 +6,7 @@ import How from "./components/How/How"
 import Meals from './components/Meals/Meals'
 import Testinomials from "./components/testinomials/testinomials";
 import Pricing from './components/pricing/pricing'
-// import Cta from './components/cta/cta'
+import Cta from './components/cta/cta'
 
 import {  Routes, Route } from "react-router-dom";
  import './components/css/general.css';
@@ -23,7 +23,7 @@ function App() {
     <Meals></Meals>
     <Testinomials></Testinomials>
     <Pricing></Pricing>
-    {/* <Cta></Cta> */}
+    <Cta></Cta>
      <Routes>
       <Route exact="/" element={Header}/>
      </Routes>

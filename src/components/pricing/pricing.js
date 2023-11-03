@@ -56,6 +56,7 @@ function pricing() {
                   Start eating well
                 </a>
                 </NavLink> */}
+                <button class="btn btn--full pricing-btn">Start eating well</button>
               </div>
             </div>
           );
