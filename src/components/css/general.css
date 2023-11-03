@@ -297,6 +297,8 @@ strong {
 
 .pricing-plan--starter { 
   padding: 2rem 0 2rem 0; 
+  border:0.2rem solid orange;
+  border-radius: 20px;
 }
 
 .meal-list{
