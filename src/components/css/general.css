@@ -336,3 +336,8 @@ strong {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+::selection {
+  color: white;
+  background: orange;
+}
