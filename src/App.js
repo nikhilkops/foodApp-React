@@ -8,11 +8,9 @@
 // import Cta from "./components/cta/cta";
 import Login from "./components/login/login";
 import AllComponents from "./components/AllComponents";
-import {
-  BrowserRouter as Router,
+import { 
   Route,
-  Routes,
-  Switch,
+  Routes, 
 } from "react-router-dom";
 
 import "./components/css/general.css";
