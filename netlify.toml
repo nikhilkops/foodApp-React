@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/api/*"
+  from = "/api/v1/*"
   to = "https://foodapp-backend-z289.onrender.com/"
   status = 200
