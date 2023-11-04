@@ -8,7 +8,7 @@ using pixel will not adjust to useer font size setting and also not to user zomm
 /**************************/
 /* Below 1344px */
 /* ********************* */
-@media (max-width: 84em) {
+@media (max-width: 84em) { 
   .hero {
     max-width: 120rem;
   }
