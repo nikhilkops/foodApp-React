@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import customFetch from "../../utils/customFetch";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-// sd
-
+ 
 async function test() {
   try { 
      console.log("SDsadas")
+
+     
     const data = await customFetch.get("/test");
     console.log(data);
   } catch (error) {
