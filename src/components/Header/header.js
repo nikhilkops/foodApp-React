@@ -6,9 +6,12 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 async function test() {
   try { 
+     console.log("SDsadas")
     const data = await customFetch.get("/test");
     console.log(data);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 
