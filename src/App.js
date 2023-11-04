@@ -1,32 +1,31 @@
-import Header from "./components/Header/header";
-import Hero from "./components/Hero/hero";
+// import Header from "./components/Header/header";
+// import Hero from "./components/Hero/hero";
+// import Featured from "./components/featured/Featured";
+// import How from "./components/How/How";
+// import Meals from "./components/Meals/Meals";
+// import Testinomials from "./components/testinomials/testinomials";
+// import Pricing from "./components/pricing/pricing";
+// import Cta from "./components/cta/cta";
+import Login from "./components/login/login";
+import AllComponents from "./components/AllComponents";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Switch,
+} from "react-router-dom";
 
-import Featured from "./components/featured/Featured";
-import How from "./components/How/How"
-import Meals from './components/Meals/Meals'
-import Testinomials from "./components/testinomials/testinomials";
-import Pricing from './components/pricing/pricing'
-import Cta from './components/cta/cta'
+import "./components/css/general.css";
+import "./components/css/queries.css";
+import "./components/css/style.css";
 
-import {  Routes, Route } from "react-router-dom";
- import './components/css/general.css';
- import './components/css/queries.css';
- import './components/css/style.css';
 function App() {
- 
   return (
     <>
-    <Header></Header>
-    <Hero></Hero>
-    <Featured></Featured>
-    <How></How>
-    <Meals></Meals>
-    <Testinomials></Testinomials>
-    <Pricing></Pricing>
-    <Cta></Cta>
-     <Routes>
-      <Route exact="/" element={Header}/>
-     </Routes>
+      <Routes>
+      <Route path="/" element={<AllComponents/>}/> 
+      <Route path="/login" element={<Login/>}/>
+      </Routes>
     </>
   );
 }
