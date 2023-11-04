@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const customFetch = axios.create({
-  baseURL: "https://foodapp-backend-z289.onrender.com/api/v1/",
+  baseURL: "https://foodapp-backend-b38s.onrender.com/api/v1",
 });
 
 export default customFetch;
