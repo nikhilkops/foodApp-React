@@ -338,6 +338,6 @@ strong {
 }
 
 ::selection {
-  color: white;
-  background: orange;
+  color: #fdf2e9;
+  background: #e67e22;
 }
