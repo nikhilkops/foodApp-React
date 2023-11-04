@@ -1,7 +1,7 @@
-[[build]]
+[build]
   command = "npm run build"
   publish = "build"
 
-  [[build.proxy-config]]
-    from = "/api"
-    to = "https://foodapp-backend-z289.onrender.com"
+[[build.proxy-config]]
+  from = "/api"
+  to = "https://foodapp-backend-z289.onrender.com"
