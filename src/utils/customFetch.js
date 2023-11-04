@@ -1,6 +1,7 @@
-import axios from "axios"; 
+import axios from "axios";
+const URL = process.env.BACKEND_URL; 
 const customFetch = axios.create({
-    baseURL:'/api/v1'
+    baseURL:`${URL}/api/v1`
 })
 
 export default customFetch;
