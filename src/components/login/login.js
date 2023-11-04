@@ -103,7 +103,7 @@ function Login() {
                   {" "}
                   <div className="login_button_container" onClick={LoginButton}>
                     <div className="login_button">
-                      <a>Sign In</a>
+                      <span>Sign In</span>
                     </div>
                   </div>
                   <div className="other_option">
