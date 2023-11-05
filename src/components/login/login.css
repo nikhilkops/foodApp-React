@@ -75,7 +75,7 @@
   align-items: center;
   background-color: #e67e22;
 }
-.login_button a {
+.login_button span {
   color: white;
 
   font-size: 1.8rem;
