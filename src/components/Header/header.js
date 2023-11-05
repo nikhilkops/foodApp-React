@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import customFetch from "../../utils/customFetch";
+// import customFetch from "../../utils/customFetch";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 // sd
+import axios from "axios";
 
 async function test() {
   try { 
-     console.log("Hello I am in test function")
-    const data = await customFetch.get("/test");
-    const helloJSON = await customFetch.get("/hello");
-    console.log(helloJSON);
-    console.log(data);
+    //  console.log("Hello I am in test function")
+    // const data = await customFetch.get("/test");
+    // const helloJSON = await customFetch.get("/hello");
+
+    const test = await axios('/api/v1/test')
+    console.log(test)
+    // console.log(helloJSON);
+    // console.log(data);
   } catch (error) {
     console.log(error)
   }
