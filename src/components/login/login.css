@@ -14,7 +14,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  border:0.1rem solid snow;
+  border: 0.1rem solid snow;
 
   z-index: 2;
 }
@@ -134,4 +134,15 @@
 .signup a:hover,
 .signup a:active {
   color: #f1f1f1;
+}
+
+.loading-circle {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom:0.2rem
+}
+
+.loader
+{
+  transform: scale(0.4);
 }

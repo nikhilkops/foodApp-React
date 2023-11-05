@@ -3,9 +3,9 @@ import "./login.css";
 
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { SpinningCircles } from "react-loading-icons";
+import { Bars } from "react-loading-icons";
 import customFetch from "../../utils/customFetch";
 
 import logo from "../../img/omnifood-logo-white.png";
@@ -15,23 +15,23 @@ function Login() {
   let [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
   async function LoginButton() {
     try {
-       
-      const loginCredentials = {email:email,password:password}
-       const userLogin = await customFetch.post("/auth/login", loginCredentials); 
-       console.log(userLogin)
-       
+      setLoading(true);
+      const loginCredentials = { email: email, password: password };
+      const userLogin = await customFetch.post("/auth/login", loginCredentials);
+      console.log(userLogin);
+      setLoading(false);
+      navigate("/");
     } catch (error) {
-       
-      console.log(error.response.data)
+      console.log(error.response.data);
+      return null;
     }
   }
 
   function fSetEmail(e) {
-    let value = e.target.value;
-    //remove below
-    setLoading(false);
+    let value = e.target.value; 
     setEmail(value);
   }
   function fSetPassword(e) {
@@ -101,7 +101,7 @@ function Login() {
 
             {loading ? (
               <div className="loading-circle">
-                <SpinningCircles fill="#e67e22" />
+                <Bars className="loader" />
               </div>
             ) : (
               <>
