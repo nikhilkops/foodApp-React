@@ -8,6 +8,8 @@ async function test() {
   try { 
      console.log("Hello I am in test function")
     const data = await customFetch.get("/test");
+    const helloJSON = await customFetch.get("/hello");
+    console.log(helloJSON);
     console.log(data);
   } catch (error) {
     console.log(error)
