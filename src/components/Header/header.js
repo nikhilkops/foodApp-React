@@ -11,7 +11,7 @@ async function test() {
     // const data = await customFetch.get("/test");
     // const helloJSON = await customFetch.get("/hello");
 
-    const test = await axios.get('/api/v1/test')
+    const test = await axios.get('/api/v1/auth/logout')
     console.log(test)
     // console.log(helloJSON);
     // console.log(data);
