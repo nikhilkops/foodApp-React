@@ -1,6 +1,5 @@
 import React from "react";
 import "./login.css";
-
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -14,8 +13,8 @@ function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
+
   async function LoginButton() {
     try {
       setLoading(true);
@@ -31,7 +30,7 @@ function Login() {
   }
 
   function fSetEmail(e) {
-    let value = e.target.value; 
+    let value = e.target.value;
     setEmail(value);
   }
   function fSetPassword(e) {

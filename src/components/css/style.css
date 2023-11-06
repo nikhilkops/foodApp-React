@@ -27,7 +27,20 @@
   align-items: center;
   gap: 3.2rem;
 }
-
+.main-nav-user
+{
+   display: inline-block;
+  text-decoration: none; 
+  /* color: #333; */
+  font-weight: 500;
+  font-size: 1.8rem;
+ 
+outline:2px transparent;
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #e67e22;
+}
 .main-nav-link:link,
 .main-nav-link:visited,
 .main-nav-link-active
