@@ -67,9 +67,9 @@ function Header() {
           </li>
           <li>
             {currentUser ? (
-              <button className="main-nav-user  ">
+              <NavLink path='/' className="main-nav-user  ">
                 {currentUser.user.name}
-              </button>
+              </NavLink>
             ) : (
               <NavLink to="/login" className="main-nav-link nav-cta">
                 Login
