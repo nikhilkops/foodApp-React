@@ -30,8 +30,8 @@ function Header() {
     fetchData();
 
     // Return a cleanup function, in this case, an empty function
-    return () => {};
-  }, [ ]);
+    return () => { };
+  }, []);
 
   const [menuOpen, setMenuOpen] = useState(false);
   return (

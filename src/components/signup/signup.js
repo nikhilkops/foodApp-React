@@ -1,9 +1,10 @@
-import React from "react";
+import React ,{useEffect} from "react";
 import "./signup.css";
 
-import { NavLink } from "react-router-dom"; 
-import { useState, useEffect } from "react";
- 
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 
 import logo from "../../img/omnifood-logo-white.png";
 
@@ -12,17 +13,7 @@ function Signup() {
   let [password, setPassword] = useState("");
   let [confirmPassword, setConfirmPassword] = useState("");
   let [name, setName] = useState("");
-
-  useEffect(() => {
-    const lastUser = localStorage.getItem("omnifood_user");
-
-    // setUser(JSON.parse(lastUser));
-
-    return () => {
-      <div> </div>;
-    };
-  }, []);
-
+  let[city,setCity] = useState("");
   function fSetName(e) {
     setName(e.target.value);
   }
@@ -35,26 +26,52 @@ function Signup() {
   function fSetConfirmPassword(e) {
     setConfirmPassword(e.target.value);
   }
+  function LoginButton() {
 
-  function userInput(props)
-  {
-    return (
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={fSetName}
-        autoComplete="on"
-      />
-    );
   }
-  async function SignupButton() {}
+  // function userInput(props)
+  // {
+  //   return (
+  //     <input
+  //       type="text"
+  //       placeholder="Name"
+  //       value={name}
+  //       onChange={fSetName}
+  //       autoComplete="on"
+  //     />
+  //   );
+  // }
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async function (position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        // Using a free reverse geocoding service like Nominatim
+        const reverseGeocodingURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+
+        try {
+          const response = await axios.get(reverseGeocodingURL);
+          const data = response.data;
+          const city = data.address.city; 
+          setCity(city);
+        } catch (error) {
+          console.error("Error fetching city data: " + error);
+        }
+      });
+    } else {
+      console.log("Geolocation is not available in this browser.");
+    }
+  }, []);
+  async function SignupButton() { }
   return (
     <>
+      {" "}
       <div className="authorize-background"></div>
-      <div className="container-login signup">
+      <div className="container-login">
         <div className="image_container">
-          <img className="logo-container" src={logo} />
+          <img className="logo-container" alt="Logo" src={logo} />
 
           <NavLink to="/">
             <svg
@@ -62,7 +79,6 @@ function Signup() {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke="currentColor"
               className="close"
             >
               <path
@@ -75,12 +91,21 @@ function Signup() {
         </div>
 
         <form className="login_info">
-          <div className="name">
+          <div className="email">
             <input
               type="text"
-              placeholder="Name"
-              value={name}
-              onChange={fSetName}
+              placeholder="First Name"
+              value={email}
+              onChange={fSetEmail}
+              autoComplete="on"
+            />
+          </div>
+          <div className="email">
+            <input
+              type="text"
+              placeholder="LastName"
+              value={email}
+              onChange={fSetEmail}
               autoComplete="on"
             />
           </div>
@@ -89,6 +114,15 @@ function Signup() {
               type="email"
               placeholder="Email"
               value={email}
+              onChange={fSetEmail}
+              autoComplete="on"
+            />
+          </div>
+          <div className="email">
+            <input
+              type="text"
+              placeholder="City"
+              value={city}
               onChange={fSetEmail}
               autoComplete="on"
             />
@@ -102,27 +136,34 @@ function Signup() {
               autoComplete="on"
             />
           </div>
+
           <div className="password">
+
             <input
               type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={fSetConfirmPassword}
+              placeholder="Conform Password"
+              value={password}
+              onChange={fSetPassword}
               autoComplete="on"
             />
           </div>
 
-          <div className="login_button_container">
-            <div className="login_button" onClick={SignupButton}>
-              <a>Sign Up</a>
-            </div>
-          </div>
 
-          <div className="other_option">
-            <div className="signup">
-              <NavLink to="/signin">Already Have an account ?</NavLink>
+          <>
+            {" "}
+            <div className="login_button_container" onClick={LoginButton}>
+              <div className="login_button">
+                <span>Sign Up</span>
+              </div>
             </div>
-          </div>
+            <div className="other_option">
+
+              <div className="signup">
+                <NavLink to="/signup">Sign In</NavLink>
+              </div>
+            </div>
+          </>
+
         </form>
       </div>
     </>
