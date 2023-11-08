@@ -31,7 +31,7 @@ function Header() {
 
     // Return a cleanup function, in this case, an empty function
     return () => {};
-  }, [currentUser]);
+  }, [ ]);
 
   const [menuOpen, setMenuOpen] = useState(false);
   return (
