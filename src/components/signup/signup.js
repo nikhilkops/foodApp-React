@@ -43,7 +43,7 @@ function Signup() {
     if (password !== confirmPassword) {
       errors.push("Passwords do not match.");
     }
-    console.log(errors)
+    
     return errors;
   }
   

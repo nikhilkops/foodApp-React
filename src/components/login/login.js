@@ -20,7 +20,7 @@ function Login() {
       setLoading(true);
       const loginCredentials = { email: email, password: password };
       const userLogin = await customFetch.post("/auth/login", loginCredentials);
-      console.log(userLogin);
+      
       toast.success(`${userLogin.data.name} has been logged in !`, {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 2500, // milliseconds
