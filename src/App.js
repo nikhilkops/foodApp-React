@@ -6,8 +6,9 @@
 // import Testinomials from "./components/testinomials/testinomials";
 // import Pricing from "./components/pricing/pricing";
 // import Cta from "./components/cta/cta";
+
 import Login from "./components/login/login";
-// import Signup from './components/signup/signup'
+import Signup from './components/signup/signup'
 import AllComponents from "./components/AllComponents";
 import { 
   Route,
@@ -24,7 +25,7 @@ function App() {
       <Routes>
       <Route path="/" element={<AllComponents/>}/> 
       <Route path="/login" element={<Login/>}/>
-      {/* <Route path="/signup" element={<Signup/>}/> */}
+      <Route path="/signup" element={<Signup/>}/>
       </Routes>
     </>
   );

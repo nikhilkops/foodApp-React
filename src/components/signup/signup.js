@@ -1,46 +1,100 @@
-import React ,{useEffect} from "react";
+import React, { useEffect } from "react";
 import "./signup.css";
-
+import { toast } from 'react-toastify';
+import { Bars } from "react-loading-icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
-
+import customFetch from "../../utils/customFetch";
 import logo from "../../img/omnifood-logo-white.png";
 
 function Signup() {
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [confirmPassword, setConfirmPassword] = useState("");
-  let [name, setName] = useState("");
-  let[city,setCity] = useState("");
-  function fSetName(e) {
-    setName(e.target.value);
-  }
-  function fSetEmail(e) {
-    setEmail(e.target.value);
-  }
-  function fSetPassword(e) {
-    setPassword(e.target.value);
-  }
-  function fSetConfirmPassword(e) {
-    setConfirmPassword(e.target.value);
-  }
-  function LoginButton() {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    location: '',
+    password: '',
+    confirmPassword: '',
+  }); 
 
+  function validateData() {
+    const { name, lastName, email, location, password, confirmPassword } = formData;
+
+    let errors = []
+    if (name.trim() === '') {
+      errors.push("Name cannot be empty.");
+    }
+    if (lastName.trim() === '') {
+      errors.push("Last name cannot be empty.")
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.trim() === '' || !emailRegex.test(email)) {
+      errors.push("Invalid email address.");
+    }
+    if (location.trim() === '') {
+      errors.push("Location cannot be empty.");
+    }
+    if (password.length < 8) {
+      errors.push("Password should be at least 8 characters long.");
+    }
+
+    if (password !== confirmPassword) {
+      errors.push("Passwords do not match.");
+    }
+    console.log(errors)
+    return errors;
   }
-  // function userInput(props)
-  // {
-  //   return (
-  //     <input
-  //       type="text"
-  //       placeholder="Name"
-  //       value={name}
-  //       onChange={fSetName}
-  //       autoComplete="on"
-  //     />
-  //   );
-  // }
+  
+  const handleSignup = async (e) => {
+    // You can now access form data from the formData state
+    const errorMessage = validateData();
+    if (errorMessage.length > 0) {
+      errorMessage.forEach(error => {
+        toast.error(error, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500, // milliseconds
+          style: {
+            fontSize: '18px', // Set the desired font size
+          }
+        });
+      });
+      return;
+    }
+    try {
+      setLoading(true);
+      const signupCredentials = formData
+      await customFetch.post("/auth/register", signupCredentials);
+      toast.success(`${formData.name} has been registered !`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
+    } catch (error) {
+      toast.error(error?.response?.data?.message, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
+      setLoading(false);
+
+      return null;
+    }
+    // Perform any other actions with the form data as needed
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) =>
+    ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -53,9 +107,13 @@ function Signup() {
 
         try {
           const response = await axios.get(reverseGeocodingURL);
-          const data = response.data;
-          const city = data.address.city; 
-          setCity(city);
+          const data = response?.data;
+          const city = data?.address?.city;
+
+          setFormData(prevFormData => ({
+            ...prevFormData,
+            location: city,
+          }));
         } catch (error) {
           console.error("Error fetching city data: " + error);
         }
@@ -64,12 +122,12 @@ function Signup() {
       console.log("Geolocation is not available in this browser.");
     }
   }, []);
-  async function SignupButton() { }
+
   return (
     <>
       {" "}
       <div className="authorize-background"></div>
-      <div className="container-login">
+      <div className="container-login signup">
         <div className="image_container">
           <img className="logo-container" alt="Logo" src={logo} />
 
@@ -90,80 +148,80 @@ function Signup() {
           </NavLink>
         </div>
 
-        <form className="login_info">
-          <div className="email">
+        <form className="login_info"  >
+          <div className="credentials">
             <input
               type="text"
               placeholder="First Name"
-              value={email}
-              onChange={fSetEmail}
-              autoComplete="on"
+              name="name"
+              value={formData.firstName}
+              onChange={handleChange}
             />
           </div>
-          <div className="email">
+          <div className="credentials">
             <input
               type="text"
-              placeholder="LastName"
-              value={email}
-              onChange={fSetEmail}
-              autoComplete="on"
+              placeholder="Last Name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
             />
           </div>
-          <div className="email">
+          <div className="credentials">
             <input
               type="email"
               placeholder="Email"
-              value={email}
-              onChange={fSetEmail}
-              autoComplete="on"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
-          <div className="email">
+          <div className="credentials">
             <input
               type="text"
               placeholder="City"
-              value={city}
-              onChange={fSetEmail}
-              autoComplete="on"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
             />
           </div>
-          <div className="password">
+          <div className="credentials">
             <input
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={fSetPassword}
-              autoComplete="on"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
             />
           </div>
-
-          <div className="password">
-
+          <div className="credentials">
             <input
               type="password"
-              placeholder="Conform Password"
-              value={password}
-              onChange={fSetPassword}
-              autoComplete="on"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
             />
           </div>
-
-
-          <>
-            {" "}
-            <div className="login_button_container" onClick={LoginButton}>
-              <div className="login_button">
-                <span>Sign Up</span>
+          {
+            loading ?
+              <div className="loading-circle">
+                <Bars className="loader" />
+              </div> :
+              <div className="login_button_container" onClick={handleSignup} >
+                <div className="login_button">
+                  <span>Sign Up</span>
+                </div>
               </div>
-            </div>
-            <div className="other_option">
+          }
 
-              <div className="signup">
-                <NavLink to="/signup">Sign In</NavLink>
-              </div>
-            </div>
-          </>
 
+          <div className="other_option">
+
+            <div className="signup">
+              <NavLink to="/signup">Sign In</NavLink>
+            </div>
+          </div>
         </form>
       </div>
     </>

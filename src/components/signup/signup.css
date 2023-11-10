@@ -47,14 +47,15 @@
   border: 1px solid grey;
 }
 
-.password {
-  display: flex;
-  justify-content: center;
+ 
 
+.credentials
+{  display: flex;
+  justify-content: center; 
   margin-top: 1rem;
 }
 
-.email input {
+.credentials input {
   height: 3rem;
   width: 100%;
 
@@ -86,10 +87,14 @@
   align-items: center;
   background-color: #e67e22;
 }
-.login_button a {
+.login_button button {
   color: white;
-
+  background: #e67e22;
+  border: none;
   font-size: 1.8rem;
+}
+.login_button_container:hover {
+ cursor: pointer;
 }
 
 .login_button_container {
@@ -128,5 +133,5 @@
 }
 
 .signup {
-  height: 38rem;
+  height: 45rem;
 }

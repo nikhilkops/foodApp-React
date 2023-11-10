@@ -39,9 +39,7 @@ function Login() {
   }
 
   return (
-    <>
-  
-
+    <> 
       <>
         {" "}
         <div className="authorize-background"></div>
