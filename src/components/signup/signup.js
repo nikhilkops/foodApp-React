@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./signup.css";
 import { toast } from 'react-toastify';
 import { Bars } from "react-loading-icons";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import customFetch from "../../utils/customFetch";
@@ -18,7 +18,7 @@ function Signup() {
     password: '',
     confirmPassword: '',
   }); 
-
+  const navigate = useNavigate();
   function validateData() {
     const { name, lastName, email, location, password, confirmPassword } = formData;
 
@@ -73,6 +73,7 @@ function Signup() {
           fontSize: '18px', // Set the desired font size
         }
       });
+      navigate('/')
     } catch (error) {
       toast.error(error?.response?.data?.message, {
         position: toast.POSITION.TOP_CENTER,

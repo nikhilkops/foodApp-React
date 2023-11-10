@@ -27,26 +27,24 @@
   align-items: center;
   gap: 3.2rem;
 }
-.main-nav-user
-{
-   display: inline-block;
+
+.main-nav-user {
+  display: inline-block;
   text-decoration: none; 
-  /* color: #333; */
   font-weight: 500;
-  font-size: 1.8rem;
- 
-outline:2px transparent;
+  font-size: 1.8rem; 
+  outline: 2px transparent;
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
   color: #fff;
   background-color: #e67e22;
 }
+
 .main-nav-link:link,
 .main-nav-link:visited,
-.main-nav-link-active
- {
+.main-nav-link-active {
   display: inline-block;
-  text-decoration: none; 
+  text-decoration: none;
   color: #333;
   font-weight: 500;
   font-size: 1.8rem;
@@ -70,29 +68,27 @@ outline:2px transparent;
 .main-nav-link.nav-cta:active {
   background-color: #cf711f;
 }
+
 /* Mobile */
 
-.btn-mobile-nav
-{
-  border:none;
-  background : none;
-  cursor:pointer;
+.btn-mobile-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
 
-  display:none ;
+  display: none;
 
-  z-index:1
+  z-index: 1
 }
 
-.icon-mobile-nav
-{
-  height:4.8rem;
-  width:4.8rem;
-  color:#333;
+.icon-mobile-nav {
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
 }
 
-.icon-mobile-nav[name="close-outline"]
-{
-  display:none;
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
 }
 
 /**************************/
@@ -102,7 +98,7 @@ outline:2px transparent;
   background-color: #fdf2e9;
   padding: 4.8rem 0 9.6rem 0;
 }
- 
+
 
 .hero {
   max-width: 130rem;
@@ -291,9 +287,11 @@ outline:2px transparent;
 .tag--vegetarian {
   background-color: #51cf66;
 }
+
 .tag--vegan {
   background-color: #94d82d;
 }
+
 .tag--paleo {
   background-color: #ffd43b;
 }
@@ -414,8 +412,8 @@ outline:2px transparent;
   padding: 4.6rem;
 }
 
-.princing-plan--complete {  
-  border:2px solid rgb(255, 211, 176) ;
+.princing-plan--complete {
+  border: 2px solid rgb(255, 211, 176);
   padding: 4.8rem;
   position: relative;
   overflow: hidden;
@@ -543,11 +541,9 @@ outline:2px transparent;
 }
 
 .cta-img-box {
-  background-image: linear-gradient(
-      to right bottom,
+  background-image: linear-gradient(to right bottom,
       rgba(235, 151, 78, 0.35),
-      rgba(230, 125, 34, 0.35)
-    ),
+      rgba(230, 125, 34, 0.35)),
     url("https://i.ibb.co/KFTjZn4/eating.jpg");
   background-size: cover;
   background-position: center;
@@ -665,6 +661,7 @@ outline:2px transparent;
 .footer-link:active {
   color: #555;
 }
+
 .pricing-plan--complete {
   background-color: #fdf2e9;
   padding: 4.8rem;
@@ -686,4 +683,3 @@ outline:2px transparent;
   padding: 0.8rem 8rem;
   transform: rotate(45deg);
 }
- 

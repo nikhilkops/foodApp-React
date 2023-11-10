@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import customFetch from "../../utils/customFetch";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
- 
+import Dropdown from "../../utils/dropdown";
 function Header() {
-  const [currentUser, setCurrentUser] = useState(null);
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const toggleDropdown = () => {
-  //   setIsOpen(!isOpen);
-  // };
+  const [currentUser, setCurrentUser] = useState(null); 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,16 +13,15 @@ function Header() {
       } catch (err) {
         setCurrentUser(null);
       }
-    };
-
+    }; 
     fetchData(); 
-    // Return a cleanup function, in this case, an empty function
     return () => { };
   }, []);
 
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header id="header" className={menuOpen ? "header nav-open" : "header"}>
+
       <NavLink to="/">
         <img
           class="logo"
@@ -59,12 +53,12 @@ function Header() {
           </li>
           <li>
             {currentUser ? (
-              <NavLink path='/' className="main-nav-user  ">
-                {'Hi '+currentUser.user.name}
-              </NavLink>
+              
+                <Dropdown user={ currentUser.user.name} setCurrentUser={setCurrentUser} /> 
             ) : (
               <NavLink to="/login" className="main-nav-link nav-cta">
                 Login
+
               </NavLink>
             )}
           </li>

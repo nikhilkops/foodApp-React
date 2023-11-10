@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Bars } from "react-loading-icons";
 import customFetch from "../../utils/customFetch";
-
+import { toast } from 'react-toastify';
 import logo from "../../img/omnifood-logo-white.png";
 
 function Login() {
@@ -21,12 +21,26 @@ function Login() {
       const loginCredentials = { email: email, password: password };
       const userLogin = await customFetch.post("/auth/login", loginCredentials);
       console.log(userLogin);
-      setLoading(false);
+      toast.success(`${userLogin.data.name} has been logged in !`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
+
       navigate("/");
     } catch (error) {
       console.log(error.response.data);
-      return null;
+      toast.error(`${error.response.data.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
     }
+    setLoading(false);
   }
 
   function fSetEmail(e) {
@@ -39,7 +53,7 @@ function Login() {
   }
 
   return (
-    <> 
+    <>
       <>
         {" "}
         <div className="authorize-background"></div>

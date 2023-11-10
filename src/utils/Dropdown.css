@@ -1,0 +1,43 @@
+/* Style for the dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* Style for the dropdown toggle button */
+  .dropdown-toggle {
+    padding: 10px; 
+    color: #fff;
+    background-color: #e67e22;
+  }
+  
+  /* Style for the dropdown content */
+  .dropdown-content {
+    display: none;
+    left: 0;
+    top: 7rem;
+    position: absolute;
+    background-color: #e67e22;
+    border-radius: 1rem;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  /* Style for the dropdown items */
+  .dropdown-content div {
+    color: rgb(255, 255, 255);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color on hover */
+ 
+  
+  /* Show the dropdown content when the dropdown is open */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
