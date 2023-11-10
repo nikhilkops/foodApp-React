@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
 
+import heroImage from "../../img/hero.png"
 import customer_Images from "./customerImages"
 function Hero() {
   return ( 
@@ -38,7 +39,7 @@ function Hero() {
       </div>
       <div className="hero-img-box">
         <img
-          src="https://i.ibb.co/KFpFDP2/hero.png" 
+          src= {heroImage}
 
           className="hero-img"
           alt="Woman enjoying food, meals in storage container, and food bowls on a table"

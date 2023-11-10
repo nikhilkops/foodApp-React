@@ -1,12 +1,12 @@
-const logos={
-    c1:"https://i.ibb.co/ryJqcPw/business-insider.png",
-    c2:"https://i.ibb.co/xfwYfFp/forbes.png",
-    c3:"https://i.ibb.co/93s6gvR/techcrunch.png",
-    c4:"https://i.ibb.co/djBNJXx/the-new-york-times.png",
-    c5:"https://i.ibb.co/x2b8rVT/usa-today.png"
+const logos = {
+    c1: require("../../img/logos/business-insider.png"),
+    c2: require("../../img/logos/forbes.png"),
+    c3: require("../../img/logos/techcrunch.png"),
+    c4: require("../../img/logos/the-new-york-times.png"),
+    c5: require("../../img/logos/usa-today.png"),
 }
 
-export default logos ;
+export default logos;
 
 
 
