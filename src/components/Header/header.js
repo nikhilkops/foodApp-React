@@ -2,20 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import customFetch from "../../utils/customFetch";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-// sd
-
-async function test() {
-  try {
-    console.log("Hello I am in test function");
-    const helloJSON = await customFetch.get("/hello");
-    console.log(helloJSON);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
+ 
 function Header() {
-  test();
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -27,8 +15,7 @@ function Header() {
       }
     };
 
-    fetchData();
-
+    fetchData(); 
     // Return a cleanup function, in this case, an empty function
     return () => { };
   }, []);
