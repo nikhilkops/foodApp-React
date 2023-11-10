@@ -5,6 +5,11 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
  
 function Header() {
   const [currentUser, setCurrentUser] = useState(null);
+  // const [isOpen, setIsOpen] = useState(false);
+
+  // const toggleDropdown = () => {
+  //   setIsOpen(!isOpen);
+  // };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,7 +60,7 @@ function Header() {
           <li>
             {currentUser ? (
               <NavLink path='/' className="main-nav-user  ">
-                {currentUser.user.name}
+                {'Hi '+currentUser.user.name}
               </NavLink>
             ) : (
               <NavLink to="/login" className="main-nav-link nav-cta">
