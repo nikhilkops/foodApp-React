@@ -1,30 +1,14 @@
-const pricingPlan = {
-  c1: {
-    planType: `Starter`,
-    isComplete: `0`,
-    pricing: `399`,
-    permonth: `13`,
-    featuresGreen: [
-      `1 Meal per day`,
-      `Order from 11AM to 9PM`,
-      `Delivery is Free`,
-    ],
-    featuresRed: [`Get Access to Latest Recipes`, `Meal Customization`],
-  },
-  c2: {
-    planType: `Complete`,
-    isComplete: `1`,
-    pricing: `649`,
-    permonth: `11`,
-    featuresGreen: [
-      `2 Meal per day`,
-      `Order 24/7`,
-      `Delivery is Free`,
-      `Get Access to Latest Recipes`,
-      `Meal Customization`,
-    ], 
-    featuresRed: [],
-  },
-};
+import customFetch from "../../utils/customFetch";
+async function getPricing() {
+  const cachedData = localStorage.getItem("PricingPlans")
+  if (cachedData) return JSON.parse(cachedData); 
+  try {
+    const pricing = await customFetch.get("/pricing/pricing-plans");
+    localStorage.setItem("PricingPlans", JSON.stringify(pricing.data)); 
+    return pricing.data
+  } catch (error) {
 
+  } 
+}
+const pricingPlan = await getPricing()  
 export default pricingPlan;
