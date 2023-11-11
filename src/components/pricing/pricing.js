@@ -1,9 +1,26 @@
-import { BsCheck2Circle } from "react-icons/bs"; 
-import { RxCrossCircled } from "react-icons/rx"; 
+import { BsCheck2Circle } from "react-icons/bs";
+import { RxCrossCircled } from "react-icons/rx";
 import PricingPlan from "./pricingPlan";
 import PricingFeatures from "./pricingFeatures";
+import customFetch from "../../utils/customFetch";
 // import { NavLink } from "react-router-dom";
 function pricing() {
+  console.log(PricingPlan)
+
+  const handlePricingButton = async (e) => {
+    try {
+      console.log(e.target.id)
+      const id = e.target.id;
+      const idObj = { "id": id }
+      console.log(idObj)
+      const pricing = await customFetch.get('/payment/checkout', idObj);
+      console.log(pricing)
+
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <section class="section-pricing">
       <div class="container">
@@ -51,12 +68,7 @@ function pricing() {
                 })}
               </ul>
               <div class="plan-sing-up">
-                {/* <NavLink to="/" class="link">
-                   <a   class="btn btn--full">
-                  Start eating well
-                </a>
-                </NavLink> */}
-                <button class="btn btn--full pricing-btn">Start eating well</button>
+                <button id={plan["_id"]} onClick={handlePricingButton} class="btn btn--full pricing-btn">Start eating well</button>
               </div>
             </div>
           );
@@ -72,21 +84,21 @@ function pricing() {
 
       <div class="container grid grid--4-cols">
 
-      {
-        Object.keys(PricingFeatures).map((key)=>{
-          const feature = PricingFeatures[key]
-          return (
-            <div class="feature">
-              {feature["icon"]}
-              <p class="feature-title">{feature["title"]}</p>
-              <p class="feature-text">
-                {feature["featureText"]}
-              </p>
-            </div>
-          );
-        })
-      }
-        
+        {
+          Object.keys(PricingFeatures).map((key) => {
+            const feature = PricingFeatures[key]
+            return (
+              <div class="feature">
+                {feature["icon"]}
+                <p class="feature-title">{feature["title"]}</p>
+                <p class="feature-text">
+                  {feature["featureText"]}
+                </p>
+              </div>
+            );
+          })
+        }
+
       </div>
     </section>
   );

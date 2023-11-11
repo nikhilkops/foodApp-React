@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "https://foodapp-backend-b38s.onrender.com/",
+      target: "http://localhost:5100",
       changeOrigin: true,
     })
   );
