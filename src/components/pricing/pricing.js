@@ -1,20 +1,46 @@
+ 
 import { BsCheck2Circle } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
 import PricingPlan from "./pricingPlan";
 import PricingFeatures from "./pricingFeatures";
-import customFetch from "../../utils/customFetch";
-// import { NavLink } from "react-router-dom";
+import customFetch from "../../utils/customFetch"; 
 function pricing() {
-  console.log(PricingPlan)
 
+  console.log(window) 
   const handlePricingButton = async (e) => {
     try {
-      console.log(e.target.id)
-      const id = e.target.id;
-      const idObj = { "id": id }
-      console.log(idObj)
-      const pricing = await customFetch.get('/payment/checkout', idObj);
-      console.log(pricing)
+      const documentID = e.target.id;
+      const keyResponse = await customFetch.get(`/payment/key`);
+      const pricing = await customFetch.post(`/payment/checkout/${documentID}`); 
+      const { amount, id } = pricing.data;
+      const key = keyResponse.data.key;   
+      let CALLBACK_URL = 'https://foodapp-react-sctz.onrender.com/api/v1/payment/payment-verification'
+      if(process.env.NODE_ENV==='development') CALLBACK_URL='http://localhost:3000/api/v1/payment/payment-verification'
+      console.log(CALLBACK_URL)
+      const options = {
+        key: key,
+        amount: amount,
+        currency: "INR",
+        name: "OmniFood Payment",
+        description: "Payment",
+        image: "https://avatars.githubusercontent.com/u/25058652?v=4",
+        order_id: id,
+        callback_url:CALLBACK_URL ,
+        prefill: {
+          name: "Gaurav Kumar",
+          email: "gaurav.kumar@example.com",
+          contact: "9999999999"
+        },
+        notes: {
+          "address": "Razorpay Corporate Office"
+        },
+        theme: {
+          "color": "#e67e22"
+        }
+      };
+      console.log(options)
+      const razor = new window.Razorpay(options)
+      razor.open()
 
     }
     catch (error) {
