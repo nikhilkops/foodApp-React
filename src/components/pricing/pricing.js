@@ -23,7 +23,7 @@ function pricing() {
         currency: "INR",
         name: "OmniFood Payment",
         description: "Payment",
-        image: "https://avatars.githubusercontent.com/u/25058652?v=4",
+        image: "https://i.ibb.co/t3tXx5M/omnifood-logo.png",
         order_id: id,
         callback_url:CALLBACK_URL ,
         prefill: {
@@ -54,7 +54,7 @@ function pricing() {
         <h2 class="heading-secondary">Eating well without breaking the bank</h2>
       </div>
 
-      <div class="container grid grid--2-cols margin-bottom-md">
+      <div class="container grid grid--2-cols margin-bottom-md pricing-query">
         {Object.keys(PricingPlan).map((key) => {
           const plan = PricingPlan[key];
           return (
@@ -68,11 +68,11 @@ function pricing() {
               <header class="plan-header">
                 <p class="plan-name">{plan["planType"]}</p>
                 <p class="plan-price">
-                  <span>$</span>
+                  <span>₹</span>
                   {plan["pricing"]}
                 </p>
                 <p class="plan-text">
-                  per month. That's just ${plan["permonth"]} per meal!
+                  per month. That's just ₹{plan["permonth"]} per meal!
                 </p>
               </header>
               <ul class="list">
