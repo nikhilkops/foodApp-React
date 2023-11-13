@@ -5,8 +5,7 @@ import Dropdown from "../../utils/dropdown";
 import { useOmniFooodContext } from "../AllComponents"
 function Header() {
   const { currentUser } = useOmniFooodContext();
-
-  console.log(currentUser)
+ 
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header id="header" className={menuOpen ? "header nav-open" : "header"}>
