@@ -3,7 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import './Sucessful.css';
 
 function Sucessfull() {
-  const searchQuery = useSearchParams()[0];
+  const searchQuery = JSON.parse(useSearchParams()[0].get("data"));
+  console.log(searchQuery)
+ 
   return (
     <div className="successful-container">
       <div className="container">
@@ -20,9 +22,10 @@ function Sucessfull() {
                 Your payment has been successfully processed. If you have any questions, our support team is here to help.
               </div>
               <div className="order-details">
-                <div className="order-number-label">Order Number</div>
-                <div className="order-number-label">Order Number</div>
-                <div className="order-number">{searchQuery.get("reference")}</div>
+                <div className="order-number-label">Amount: ₹ {searchQuery.totalAmount}</div>
+                <div className="order-number-label">Order Number: { searchQuery.payment_id}</div>
+                <div className="order-number-label">Payment Method: { searchQuery.paymentMethod}</div>
+   
               </div>
               <div className="order-footer">Thank you for choosing OmniFood!</div>
             </div>

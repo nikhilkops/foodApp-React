@@ -1,44 +1,76 @@
- 
+
 import { BsCheck2Circle } from "react-icons/bs";
 import { RxCrossCircled } from "react-icons/rx";
 import PricingPlan from "./pricingPlan";
 import PricingFeatures from "./pricingFeatures";
-import customFetch from "../../utils/customFetch"; 
-function pricing() {
+import customFetch from "../../utils/customFetch";
+import { Bars } from "react-loading-icons";
+import { useState, useEffect } from "react";
+import { toast } from 'react-toastify';
+// import { IKImage, IKUpload } from 'imagekitio-react';
+function Pricing() {
+  const [isLoading, setLoading] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await customFetch.get("/users/current-user");
+        setCurrentUser(data);
+      } catch (err) {
+        setCurrentUser(null);
+      }
+    };
+    fetchData();
+    return () => { };
+  }, []);
 
-  console.log(window) 
   const handlePricingButton = async (e) => {
     try {
+      if (!currentUser) {
+        toast.error(`User is not Logged In`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500, // milliseconds
+          style: {
+            fontSize: '18px', // Set the desired font size
+          }
+        });
+      }
+      const { name, lastName, email, location, _id } = currentUser.user;
+      console.log(_id)
+      setLoading(true)
       const documentID = e.target.id;
       const keyResponse = await customFetch.get(`/payment/key`);
-      const pricing = await customFetch.post(`/payment/checkout/${documentID}`); 
+      const pricing = await customFetch.post(`/payment/checkout/${documentID}`);
+      console.log(pricing)
+
+      const { planType, price } = pricing.data.cPlan;
       const { amount, id } = pricing.data;
-      const key = keyResponse.data.key;   
+      const key = keyResponse.data.key;
       let CALLBACK_URL = 'https://foodapp-react-sctz.onrender.com/api/v1/payment/payment-verification'
-      if(process.env.NODE_ENV==='development') CALLBACK_URL='http://localhost:3000/api/v1/payment/payment-verification'
-      console.log(CALLBACK_URL)
+      if (process.env.NODE_ENV === 'development') CALLBACK_URL = 'http://localhost:3000/api/v1/payment/payment-verification'
       const options = {
         key: key,
         amount: amount,
         currency: "INR",
-        name: "OmniFood Payment",
-        description: "Payment",
+        name: `Payment`,
+        description: `OmniFood payment for Plan-Type: ${planType} ,Priced at INR ${price}`,
         image: "https://i.ibb.co/t3tXx5M/omnifood-logo.png",
         order_id: id,
-        callback_url:CALLBACK_URL ,
+        callback_url: CALLBACK_URL,
         prefill: {
-          name: "Gaurav Kumar",
-          email: "gaurav.kumar@example.com",
+          name: name + " " + lastName,
+          email: email,
           contact: "9999999999"
         },
         notes: {
-          "address": "Razorpay Corporate Office"
+          "address": location,
+          "userID": _id,
+          "productID": documentID
         },
         theme: {
           "color": "#e67e22"
         }
       };
-      console.log(options)
       const razor = new window.Razorpay(options)
       razor.open()
 
@@ -46,9 +78,17 @@ function pricing() {
     catch (error) {
       console.log(error)
     }
+    setLoading(false)
   }
+
+
   return (
-    <section class="section-pricing">
+    <section class="section-pricing"> 
+      {/* <IKImage path="/default-image.jpg" transformation={[{
+    "height": "300",
+    "width": "400"
+  }]} /> 
+  */} 
       <div class="container">
         <span class="subheading">Pricing</span>
         <h2 class="heading-secondary">Eating well without breaking the bank</h2>
@@ -93,9 +133,14 @@ function pricing() {
                   );
                 })}
               </ul>
-              <div class="plan-sing-up">
-                <button id={plan["_id"]} onClick={handlePricingButton} class="btn btn--full pricing-btn">Start eating well</button>
-              </div>
+              {
+                isLoading ? (<div className="loading-circle">
+                  <Bars className="loader" stroke="#e67e22" />
+                </div>) : <div class="plan-sing-up">
+                  <button id={plan["_id"]} onClick={handlePricingButton} class="btn btn--full pricing-btn">Start eating well</button>
+                </div>
+              }
+
             </div>
           );
         })}
@@ -129,4 +174,4 @@ function pricing() {
     </section>
   );
 }
-export default pricing;
+export default Pricing;
