@@ -5,25 +5,14 @@ import PricingPlan from "./pricingPlan";
 import PricingFeatures from "./pricingFeatures";
 import customFetch from "../../utils/customFetch";
 import { Bars } from "react-loading-icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from 'react-toastify';
+import { useOmniFooodContext } from "../AllComponents"
+
 // import { IKImage, IKUpload } from 'imagekitio-react';
 function Pricing() {
+  const { currentUser } = useOmniFooodContext();
   const [isLoading, setLoading] = useState(false)
-  const [currentUser, setCurrentUser] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await customFetch.get("/users/current-user");
-        setCurrentUser(data);
-      } catch (err) {
-        setCurrentUser(null);
-      }
-    };
-    fetchData();
-    return () => { };
-  }, []);
-
   const handlePricingButton = async (e) => {
     try {
       if (!currentUser) {
@@ -36,18 +25,17 @@ function Pricing() {
         });
       }
       const { name, lastName, email, location, _id } = currentUser.user;
-      console.log(_id)
       setLoading(true)
       const documentID = e.target.id;
       const keyResponse = await customFetch.get(`/payment/key`);
       const pricing = await customFetch.post(`/payment/checkout/${documentID}`);
-      console.log(pricing)
-
       const { planType, price } = pricing.data.cPlan;
       const { amount, id } = pricing.data;
       const key = keyResponse.data.key;
+      //CALLBACK_URL
       let CALLBACK_URL = 'https://foodapp-react-sctz.onrender.com/api/v1/payment/payment-verification'
       if (process.env.NODE_ENV === 'development') CALLBACK_URL = 'http://localhost:3000/api/v1/payment/payment-verification'
+
       const options = {
         key: key,
         amount: amount,
@@ -73,7 +61,6 @@ function Pricing() {
       };
       const razor = new window.Razorpay(options)
       razor.open()
-
     }
     catch (error) {
       console.log(error)
@@ -82,12 +69,12 @@ function Pricing() {
   }
 
   return (
-    <section class="section-pricing"> 
+    <section class="section-pricing">
       {/* <IKImage path="/default-image.jpg" transformation={[{
     "height": "300",
     "width": "400"
   }]} /> 
-  */} 
+  */}
       <div class="container">
         <span class="subheading">Pricing</span>
         <h2 class="heading-secondary">Eating well without breaking the bank</h2>

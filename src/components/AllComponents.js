@@ -6,10 +6,11 @@ import Meals from "./Meals/Meals";
 import Testinomials from "./testinomials/testinomials";
 import Pricing from "./pricing/pricing";
 import Cta from "./cta/cta";
-import { useEffect, useState } from 'react'
-import customFetch from "../utils/customFetch";
+import { useEffect, useState, createContext, useContext} from 'react'
+import customFetch from "../utils/customFetch"; 
+const OmniFoodContext = createContext();
 function AllComponents() {
-  const [currentUser, setCurrentUser] = useState(null); 
+  const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,18 +25,19 @@ function AllComponents() {
   }, []);
   return (
     <>
-      <Header></Header>
-      <Hero></Hero>
-      <Featured></Featured>
-      <How></How>
-      <Meals></Meals>
-      <Testinomials></Testinomials>
-      {
+      <OmniFoodContext.Provider value={{currentUser,setCurrentUser}}>
 
-        currentUser && <Pricing></Pricing>
-      }
-      <Cta></Cta>
+        <Header></Header>
+        <Hero></Hero>
+        <Featured></Featured>
+        <How></How>
+        <Meals></Meals>
+        <Testinomials></Testinomials>
+        {  currentUser && <Pricing></Pricing> }
+        <Cta></Cta>
+      </OmniFoodContext.Provider>
     </>
   );
 }
+export const useOmniFooodContext = () => useContext(OmniFoodContext);
 export default AllComponents;

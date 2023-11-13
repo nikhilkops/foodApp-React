@@ -1,23 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import customFetch from "../../utils/customFetch";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Dropdown from "../../utils/dropdown";
+import { useOmniFooodContext } from "../AllComponents"
 function Header() {
-  const [currentUser, setCurrentUser] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await customFetch.get("/users/current-user");
-        setCurrentUser(data);
-      } catch (err) {
-        setCurrentUser(null);
-      }
-    };
-    fetchData();
-    return () => { };
-  }, []);
+  const { currentUser } = useOmniFooodContext();
 
+  console.log(currentUser)
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header id="header" className={menuOpen ? "header nav-open" : "header"}>
@@ -54,7 +43,7 @@ function Header() {
 
           {currentUser ? (
             <li>
-              <Dropdown user={currentUser.user.name} setCurrentUser={setCurrentUser} />
+              <Dropdown user={currentUser.user.name} />
             </li>
           ) : (
             <>
