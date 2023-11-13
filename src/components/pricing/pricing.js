@@ -81,7 +81,6 @@ function Pricing() {
     setLoading(false)
   }
 
-
   return (
     <section class="section-pricing"> 
       {/* <IKImage path="/default-image.jpg" transformation={[{
