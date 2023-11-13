@@ -4,7 +4,7 @@ import customFetch from "../../utils/customFetch";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Dropdown from "../../utils/dropdown";
 function Header() {
-  const [currentUser, setCurrentUser] = useState(null); 
+  const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -13,8 +13,8 @@ function Header() {
       } catch (err) {
         setCurrentUser(null);
       }
-    }; 
-    fetchData(); 
+    };
+    fetchData();
     return () => { };
   }, []);
 
@@ -51,17 +51,30 @@ function Header() {
               Pricing
             </NavLink>
           </li>
-          <li>
-            {currentUser ? (
-              
-                <Dropdown user={ currentUser.user.name} setCurrentUser={setCurrentUser} /> 
-            ) : (
-              <NavLink to="/login" className="main-nav-link nav-cta">
-                Login
 
-              </NavLink>
-            )}
-          </li>
+          {currentUser ? (
+            <li>
+              <Dropdown user={currentUser.user.name} setCurrentUser={setCurrentUser} />
+            </li>
+          ) : (
+            <>
+              <li>
+
+                <NavLink to="/login" className="main-nav-link nav-cta">
+                  Login
+
+                </NavLink>
+              </li>
+              <li>
+
+                <NavLink to="/signup" className="main-nav-link nav-cta">
+                  Signup
+
+                </NavLink>
+              </li>
+            </>
+          )}
+
         </ul>
       </nav>
 
