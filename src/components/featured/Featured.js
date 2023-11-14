@@ -14,6 +14,7 @@ function Featured() {
                       alt="logos"
                       className="customer_image"
                       key={value + " " + index}
+                      loading="lazy"
                     />
                   );
                 })}

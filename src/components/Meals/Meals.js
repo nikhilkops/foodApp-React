@@ -18,7 +18,7 @@ function Meals() {
           const mealCard = MealCard[key];
           return (
             <div class="meal">
-              <img src={mealCard.img} class="meal-img" alt={mealCard.title} />
+              <img src={mealCard.img} class="meal-img" alt={mealCard.title} loading="lazy" />
               <div class="meal-content">
                 <div class="meal-tags">
                   {Object.keys(mealCard["foodType"]).map((typeKey) => {

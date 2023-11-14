@@ -12,7 +12,7 @@ function testinomials() {
             const customer = Testimonials[key];
             return (
               <figure class="testimonial">
-                <img
+                <img loading="lazy" 
                   class="testimonial-img"
                   alt={"Photo of customer " + customer[2]}
                   src={customer[0]}

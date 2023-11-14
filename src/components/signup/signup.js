@@ -130,7 +130,7 @@ function Signup() {
       <div className="authorize-background"></div>
       <div className="container-login signup">
         <div className="image_container">
-          <img className="logo-container" alt="Logo" src={logo} />
+          <img className="logo-container" alt="Logo" src={logo} loading="lazy" />
 
           <NavLink to="/">
             <svg

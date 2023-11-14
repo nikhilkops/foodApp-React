@@ -11,6 +11,7 @@ import logo from "../../img/omnifood-logo-white.png";
 import { useOmniFooodContext } from "../../App"
 
 function Login() {
+  console.log("Loaded Login")
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ function Login() {
           fontSize: '18px', // Set the desired font size
         }
       });
- 
+
       setCurrentUser(userLogin.user)
       setReloadUser(!reloadUser)
       navigate("/");
@@ -73,7 +74,7 @@ function Login() {
         <div className="authorize-background"></div>
         <div className="container-login">
           <div className="image_container">
-            <img className="logo-container" alt="Logo" src={logo} />
+            <img className="logo-container" alt="Logo" src={logo} loading="lazy" />
 
             <NavLink to="/">
               <svg

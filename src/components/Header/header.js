@@ -13,7 +13,7 @@ function Header() {
       <NavLink to="/">
         <img
           class="logo"
-          alt="Omnifood logo"
+          alt="Omnifood logo" loading="lazy"
           src="https://i.ibb.co/t3tXx5M/omnifood-logo.png"
         />
       </NavLink>
