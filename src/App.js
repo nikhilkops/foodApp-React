@@ -2,7 +2,8 @@
 import Sucessfull from "./components/Payment Successfull/Sucessful"; 
 import Signup from './components/signup/signup'
 import AllComponents from "./components/AllComponents";
-import { useEffect, useState, createContext, useContext, lazy, Suspense } from 'react'
+import Login from "./components/login/login";
+import { useEffect, useState, createContext, useContext  } from 'react'
 import {
   Route,
   Routes,
@@ -13,7 +14,7 @@ import "./components/css/general.css";
 import "./components/css/queries.css";
 import "./components/css/style.css";
 
-const Login = lazy(() => import("./components/login/login"))
+// const Login = lazy(() => import("./components/login/login"))
 const OmniFoodContext = createContext();
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -22,12 +23,12 @@ function App() {
     const fetchData = async () => {
       try {
         const cUser = await customFetch.get("/users/current-user");
-        const data = cUser.data;
-        console.log(cUser)
+        const data = cUser.data; 
+console.log(cUser)
         if (!data) { setCurrentUser(null) }
         setCurrentUser(data);
-      } catch (err) {
-        console.log(err)
+      } catch (err) { 
+console.log(err)
         setCurrentUser(null);
       }
     };
@@ -36,7 +37,7 @@ function App() {
   }, [reloadUser]);
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}> */}
         <OmniFoodContext.Provider value={{ currentUser, setCurrentUser, setReloadUser, reloadUser }}>
 
           <Routes>
@@ -46,7 +47,7 @@ function App() {
             <Route path="/sucessfull" element={<Sucessfull />} />
           </Routes>
         </OmniFoodContext.Provider>
-      </Suspense>
+      {/* </Suspense> */}
     </>
   );
 }

@@ -181,6 +181,12 @@
   filter: brightness(0);
   opacity: 50%;
 }
+.logos img:hover {
+  height: 3.2rem;
+  filter: brightness(1);
+  opacity: 100%;
+  cursor: pointer;
+}
 
 /**************************/
 /* HOW IT WORKS SECTION */
