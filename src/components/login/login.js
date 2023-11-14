@@ -10,8 +10,7 @@ import { toast } from 'react-toastify';
 import logo from "../../img/omnifood-logo-white.png";
 import { useOmniFooodContext } from "../../App"
 
-function Login() {
-  console.log("Loaded Login")
+function Login() { 
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);

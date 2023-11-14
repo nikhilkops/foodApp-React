@@ -23,8 +23,7 @@ function App() {
     const fetchData = async () => {
       try {
         const cUser = await customFetch.get("/users/current-user");
-        const data = cUser.data; 
-console.log(cUser)
+        const data = cUser.data;  
         if (!data) { setCurrentUser(null) }
         setCurrentUser(data);
       } catch (err) { 
