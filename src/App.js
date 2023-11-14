@@ -1,13 +1,5 @@
-// import Header from "./components/Header/header";
-// import Hero from "./components/Hero/hero";
-// import Featured from "./components/featured/Featured";
-// import How from "./components/How/How";
-// import Meals from "./components/Meals/Meals";
-// import Testinomials from "./components/testinomials/testinomials";
-// import Pricing from "./components/pricing/pricing";
-// import Cta from "./components/cta/cta";
-import Sucessfull from "./components/Payment Successfull/Sucessful";
-// import Login from "./components/login/login";
+ 
+import Sucessfull from "./components/Payment Successfull/Sucessful"; 
 import Signup from './components/signup/signup'
 import AllComponents from "./components/AllComponents";
 import { useEffect, useState, createContext, useContext, lazy, Suspense } from 'react'
@@ -29,9 +21,13 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await customFetch.get("/users/current-user");
+        const cUser = await customFetch.get("/users/current-user");
+        const data = cUser.data;
+        console.log(cUser)
+        if (!data) { setCurrentUser(null) }
         setCurrentUser(data);
       } catch (err) {
+        console.log(err)
         setCurrentUser(null);
       }
     };
@@ -40,7 +36,7 @@ function App() {
   }, [reloadUser]);
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}> 
+      <Suspense fallback={<div>Loading...</div>}>
         <OmniFoodContext.Provider value={{ currentUser, setCurrentUser, setReloadUser, reloadUser }}>
 
           <Routes>
