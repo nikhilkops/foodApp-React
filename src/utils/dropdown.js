@@ -21,10 +21,20 @@ const Dropdown = (props) => {
                     width: '350px'  // Set the desired font size
                 }
             });
+            props.setReloadUser((prev) => !prev)
         }
         catch (error) {
+            toast.error(`Try again user is not logged out!`, {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 2500, // milliseconds
+                style: {
+                    fontSize: '18px',
+                    width: '350px'  // Set the desired font size
+                }
+            });
         }
-        props.setCurrentUser(null)
+
+        props.setUser(null)
     };
 
     return (

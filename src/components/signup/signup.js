@@ -220,7 +220,7 @@ function Signup() {
           <div className="other_option">
 
             <div className="signup">
-              <NavLink to="/signup">Sign In</NavLink>
+              <NavLink to="/login">Sign In</NavLink>
             </div>
           </div>
         </form>

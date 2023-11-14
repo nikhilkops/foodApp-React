@@ -7,7 +7,7 @@ import customFetch from "../../utils/customFetch";
 import { Bars } from "react-loading-icons";
 import { useState } from "react";
 import { toast } from 'react-toastify';
-import { useOmniFooodContext } from "../AllComponents"
+import { useOmniFooodContext } from "../../App"
 
 // import { IKImage, IKUpload } from 'imagekitio-react';
 function Pricing() {

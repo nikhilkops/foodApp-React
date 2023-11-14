@@ -8,19 +8,21 @@ import { Bars } from "react-loading-icons";
 import customFetch from "../../utils/customFetch";
 import { toast } from 'react-toastify';
 import logo from "../../img/omnifood-logo-white.png";
+import { useOmniFooodContext } from "../../App"
 
 function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { currentUser, setCurrentUser, setReloadUser, reloadUser } = useOmniFooodContext();
 
   async function LoginButton() {
     try {
       setLoading(true);
       const loginCredentials = { email: email, password: password };
       const userLogin = await customFetch.post("/auth/login", loginCredentials);
-      
+
       toast.success(`${userLogin.data.name} has been logged in !`, {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 2500, // milliseconds
@@ -28,7 +30,9 @@ function Login() {
           fontSize: '18px', // Set the desired font size
         }
       });
-
+ 
+      setCurrentUser(userLogin.user)
+      setReloadUser(!reloadUser)
       navigate("/");
     } catch (error) {
       console.log(error.response.data);
@@ -51,7 +55,17 @@ function Login() {
     let value = e.target.value;
     setPassword(value);
   }
+  if (currentUser) {
+    toast.success(` User is already logged in !`, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 2500, // milliseconds
+      style: {
+        fontSize: '18px', // Set the desired font size
+      }
+    });
 
+    navigate("/")
+  }
   return (
     <>
       <>

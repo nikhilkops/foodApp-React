@@ -3,9 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import './Sucessful.css';
 
 function Sucessfull() {
-  const searchQuery = JSON.parse(useSearchParams()[0].get("data"));
-  console.log(searchQuery)
- 
+  const searchQuery = JSON.parse(useSearchParams()[0].get("data"));  
   return (
     <div className="successful-container">
       <div className="container">

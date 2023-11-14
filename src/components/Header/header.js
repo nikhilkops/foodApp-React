@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Dropdown from "../../utils/dropdown";
-import { useOmniFooodContext } from "../AllComponents"
+import { useOmniFooodContext } from "../../App"
 function Header() {
-  const { currentUser } = useOmniFooodContext();
- 
+  const { currentUser, setCurrentUser, reloadUser, setReloadUser } = useOmniFooodContext();
+
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header id="header" className={menuOpen ? "header nav-open" : "header"}>
@@ -42,7 +42,7 @@ function Header() {
 
           {currentUser ? (
             <li>
-              <Dropdown user={currentUser.user.name} />
+              <Dropdown user={currentUser.user.name} setUser={setCurrentUser} setReloadUser={setReloadUser} reloadUser={reloadUser} />
             </li>
           ) : (
             <>
