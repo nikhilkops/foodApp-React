@@ -24,7 +24,8 @@ function NewPassword() {
   }
 
   async function resetPassword() { 
-    if (password === confirmPassword) {
+    console.log("knjsdfnjlksdkjfn")
+    if (password == confirmPassword) {
       console.log("sajkbdkjbsa")  
       const cUser = await customFetch.patch("/auth/resetPassword", { token, password });
       console.log(cUser);
