@@ -4,7 +4,7 @@ import Signup from './components/signup/signup'
 import AllComponents from "./components/AllComponents";
 import Login from "./components/login/login";
 import OTP from "./components/forget/otp" 
-// import NewPassword from "./components/forget/newPassword";
+import NewPassword from "./components/forget/newPassword";
 import { useEffect, useState, createContext, useContext } from 'react'
 import {
   Route,
@@ -47,7 +47,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/sucessfull" element={<Sucessfull />} />
           <Route path="/forgotPassword" element={<OTP/>}/> 
-          {/* <Route path="/reset-password" element={<NewPassword/>}/> */}
+          <Route path="/reset-password" element={<NewPassword/>}/>
         </Routes>
       </OmniFoodContext.Provider>
       {/* </Suspense> */}
