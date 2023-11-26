@@ -3,7 +3,7 @@ import "./otp.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../img/omnifood-logo-white.png"
 import { useSearchParams } from 'react-router-dom';
-
+import customFetch from "../../utils/customFetch";
 import "./newPassword.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
@@ -12,7 +12,7 @@ function NewPassword() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(true)
-
+  const token = useSearchParams()[0].get("token");
   function toggleShow() {
     setShowPassword((prev) => !prev)
   }
@@ -23,13 +23,18 @@ function NewPassword() {
     setConfirmPassword(() => e.target.value)
   }
 
-  function resetPassword() {
-    alert("asddjsbajdh")
+  async function resetPassword() { 
+    if (password === confirmPassword) {
+      console.log("sajkbdkjbsa")  
+      const cUser = await customFetch.patch("/auth/resetPassword", { token, password });
+      console.log(cUser);
+
+    }
   }
-  const searchQuery = useSearchParams()[0].get("token");
-  console.log(searchQuery)
+
+  console.log(token)
   useEffect(() => {
-    if (!searchQuery) {
+    if (!token) {
       navigate("/");
     }
     return () => { };
