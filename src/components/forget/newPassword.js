@@ -107,8 +107,8 @@ function NewPassword() {
             </div>
           </div>
 
-          <div className="login_button_container">
-            <div className="login_button" onClick={resetPassword}>
+          <div className="login_button_container" onClick={resetPassword}>
+            <div className="login_button" >
               <span>Submit</span>
             </div>
           </div>
