@@ -5,10 +5,16 @@ import logo from "../../img/omnifood-logo-white.png"
 import { useSearchParams } from 'react-router-dom';
 import customFetch from "../../utils/customFetch";
 import "./newPassword.css";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { SpinningCircles } from "react-loading-icons";
+
+
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 function NewPassword() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState();
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(true)
@@ -23,17 +29,41 @@ function NewPassword() {
     setConfirmPassword(() => e.target.value)
   }
 
-  async function resetPassword() { 
-    console.log("knjsdfnjlksdkjfn")
+  async function resetPassword() {
+    setLoading(true);
     if (password == confirmPassword) {
-      console.log("sajkbdkjbsa")  
       const cUser = await customFetch.patch("/auth/resetPassword", { token, password });
-      console.log(cUser);
-
+      if (cUser.data == 'jwt expired') {
+        toast.error(` Reset Link Expired !`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500, // milliseconds
+          style: {
+            fontSize: '18px', // Set the desired font size
+          }
+        });
+        navigate("/forgotPassword")
+        return;
+      }
+      toast.success(` Password Changed Sucessfully !`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
+      navigate("/login")
     }
+    else {
+      toast.error(` Password & Confirm Password Does'nt Match !`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
+    }
+    setLoading(false);
   }
-
-  console.log(token)
   useEffect(() => {
     if (!token) {
       navigate("/");
