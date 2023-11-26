@@ -17,14 +17,27 @@ function ForgetPassword() {
   async function sendOTP() {
     setLoading(true)
     try {
-      await customFetch.post("/auth/forgotPassword", { email });
-      toast.success(`Password Reset Link sent to ${email}`, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 2500, // milliseconds
-        style: {
-          fontSize: '18px', // Set the desired font size
-        }
-      });
+      const { result } = await customFetch.post("/auth/forgotPassword", { email });
+      if (result) {
+        toast.success(`Password Reset Link sent to ${email}`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500, // milliseconds
+          style: {
+            fontSize: '18px', // Set the desired font size
+          }
+        });
+      }
+      else
+      {
+        toast.error("Try Again!", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500, // milliseconds
+          style: {
+            fontSize: '18px', // Set the desired font size
+          }
+        });
+      }
+
 
     } catch (error) {
 
