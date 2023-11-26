@@ -126,7 +126,7 @@ function Login() {
                 </div>
                 <div className="other_option">
                   <div className="signup">
-                    <NavLink to="/forgetPassword">Forget Passsword ?</NavLink>
+                    <NavLink to="/forgotPassword">Forget Passsword ?</NavLink>
                   </div>
 
                   <div className="signup">

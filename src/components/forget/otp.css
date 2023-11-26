@@ -1,0 +1,23 @@
+.email {
+  padding-top: 2rem;
+}
+
+.otp {
+  height: 30rem;
+}
+
+.loading-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.otpInfo span
+{
+  color:aliceblue;
+  font-size: medium;
+}
