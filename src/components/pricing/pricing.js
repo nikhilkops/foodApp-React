@@ -8,6 +8,7 @@ import { Bars } from "react-loading-icons";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import { useOmniFooodContext } from "../../App"
+import "react-toastify/dist/ReactToastify.css";
 
 // import { IKImage, IKUpload } from 'imagekitio-react';
 function Pricing() {
@@ -15,6 +16,30 @@ function Pricing() {
   const [isLoading, setLoading] = useState(false)
   const handlePricingButton = async (e) => {
     try {
+      toast.info(
+        <>
+          <ul>
+            <li>Select Card 41111111111111</li>
+            <li>Exp Date: Any</li>
+            <li>CVV: Any</li>
+            <li>Continue Without Saving Card</li>
+            <li>Redirect to bank Page</li>
+            <li>Click Success</li>
+          </ul>
+        </>,
+        {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 10000,
+          closeOnClick: false, // Prevents closing on click
+          style: {
+            fontSize: '18px',
+            width: 'auto',
+            height: 'auto'
+          },
+        }
+      );
+
+
       if (!currentUser) {
         toast.error(`User is not Logged In`, {
           position: toast.POSITION.TOP_CENTER,
@@ -24,6 +49,8 @@ function Pricing() {
           }
         });
       }
+
+
       const { name, lastName, email, location, _id } = currentUser.user;
       setLoading(true)
       const documentID = e.target.id;
@@ -33,7 +60,7 @@ function Pricing() {
       const { amount, id } = pricing.data;
       const key = keyResponse.data.key;
       //CALLBACK_URL
-      let CALLBACK_URL = 'https://foodapp-react-sctz.onrender.com/api/v1/payment/payment-verification'
+      let CALLBACK_URL = process.env.PAYMENT_VERIFICATION_URL || 'https://foodapp-react-sctz.onrender.com/api/v1/payment/payment-verification'
       if (process.env.NODE_ENV === 'development') CALLBACK_URL = 'http://localhost:3000/api/v1/payment/payment-verification'
 
       const options = {
