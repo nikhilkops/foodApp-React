@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./otp.css";
 import { NavLink } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { SpinningCircles } from "react-loading-icons";
 import "react-toastify/dist/ReactToastify.css";
+import { SpinningCircles } from "react-loading-icons";
 import customFetch from "../../utils/customFetch";
 
 import logo from "../../img/omnifood-logo-white.png"
