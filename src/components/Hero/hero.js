@@ -22,12 +22,25 @@ function Hero() {
             <div className="delivered-imgs">
               {Object.values(customer_Images).map((value, index) => {
                 return (
-                  <img loading="lazy"
-                    src={value}
-                    alt="Customer_Image"
+                  <>
+                  {console.log(value)}
+                  
+
+                  <IKImage
+                    path={value}
                     className="customer_image"
-                    key={value + " " + index}
+                    alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+                    loading="lazy"
+                    lqip={{ active: true }}
+                    transformation={[
+                      { quality: 20 } ,
+                      { format: 'webp' },
+                    ]}
                   />
+                  </>
+                  
+
+                  
                 );
               })}
             </div>

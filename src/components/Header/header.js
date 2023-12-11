@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Dropdown from "../../utils/dropdown";
-import { useOmniFooodContext } from "../../App"
+import { useOmniFooodContext } from "../../App" 
 function Header() {
   const { currentUser, setCurrentUser, reloadUser, setReloadUser } = useOmniFooodContext();
 

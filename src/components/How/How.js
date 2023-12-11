@@ -1,5 +1,7 @@
 import React from 'react'
 import images from './app_images'
+import { IKImage } from 'imagekitio-react'; 
+
 function How() {
   return (
     <section class="section-how">
@@ -24,21 +26,33 @@ function How() {
             matter what diet you follow!
           </p>
         </div>
-        <div class="step-img-box">
-          <img loading="lazy"
-            src={images.c1}
-            class="step-img"
-            alt="iPhone app
-        preferences selection screen"
+        <div class="step-img-box"> 
+          <IKImage   
+            path={images.c1}
+            className="step-img"
+            alt="App Screen 1"
+            loading="lazy"
+            lqip={{ active: true }}
+            transformation={[
+              { quality: 50 }, 
+              { width: 300 }, 
+              { format: 'webp' }, 
+            ]}
           />
         </div>
 
         <div class="step-img-box">
-          <img loading="lazy"
-            src={images.c2}
-            class="step-img"
-            alt="iPhone app
-        meal approving plan screen"
+        <IKImage   
+            path={images.c2}
+            className="step-img"
+            alt="App Screen 1"
+            loading="lazy"
+            lqip={{ active: true }}
+            transformation={[
+              { quality: 50 }, 
+              { width: 300 }, 
+              { format: 'webp' }, 
+            ]}
           />
         </div>
         <div class="step-text-box">
@@ -62,11 +76,17 @@ function How() {
           </p>
         </div>
         <div class="step-img-box">
-          <img loading="lazy"
-            src={images.c3}
-            class="step-img"
-            alt="iPhone app
-        delivery screen"
+        <IKImage   
+            path={images.c3}
+            className="step-img"
+            alt="App Screen 1"
+            loading="lazy"
+            lqip={{ active: true }}
+            transformation={[
+              { quality: 50 }, 
+              { width: 300 }, 
+              { format: 'webp' }, 
+            ]}
           />
         </div>
       </div>

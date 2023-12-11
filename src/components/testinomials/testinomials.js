@@ -32,9 +32,8 @@ function testinomials() {
           return (
             <figure class="gallery-item"> 
               <IKImage
-              path={FoodGallery[key]}
-              className="hero-img"
-              alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+              path={FoodGallery[key]} 
+              alt= {key}
               loading="lazy"
               lqip={{ active: true }}
               transformation={[

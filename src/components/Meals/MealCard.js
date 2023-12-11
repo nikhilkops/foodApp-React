@@ -3,7 +3,7 @@ import { IoRestaurantOutline } from "react-icons/io5";
 import { BiStar } from "react-icons/bi";
 const MealCard = {
   c1: {
-    img: require("../../img/meals/meal-1.jpg"),
+    img: "/Images/meals/meal-1.jpg",
     title: `Japanese Gyozas`,
     foodType: {
       t1: [`VEGETARIAN`, `#51cf66`],
@@ -15,7 +15,7 @@ const MealCard = {
     },
   },
   c2: {
-    img: require("../../img/meals/meal-2.jpg"),
+    img: "/Images/meals/meal-2.jpg",
     title: `Avocado Salad`,
     foodType: {
       t1: [`VEGAN`, `#94d82d`],
@@ -28,5 +28,6 @@ const MealCard = {
     },
   },
 };
+
 
 export default MealCard;

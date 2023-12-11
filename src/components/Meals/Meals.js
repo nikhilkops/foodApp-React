@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import DietList from "./dietsList";
 import { BsCheck2Circle } from "react-icons/bs";
+import { IKImage } from 'imagekitio-react'; 
+
  
 import MealCard from "./MealCard";
 function Meals() {
@@ -18,7 +20,21 @@ function Meals() {
           const mealCard = MealCard[key];
           return (
             <div class="meal">
-              <img src={mealCard.img} class="meal-img" alt={mealCard.title} loading="lazy" />
+            
+
+              <IKImage   
+            path={ mealCard.img}
+            className="meal-img"
+            alt={mealCard.title}
+            loading="lazy"
+            lqip={{ active: true }}
+            transformation={[
+              { quality: 50 }, 
+              { width: 300 }, 
+              { format: 'webp' }, 
+            ]}
+          />
+
               <div class="meal-content">
                 <div class="meal-tags">
                   {Object.keys(mealCard["foodType"]).map((typeKey) => {
