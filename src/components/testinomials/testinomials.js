@@ -1,5 +1,7 @@
 import FoodGallery from "./foodImages";
 import Testimonials from "./testinomialsData";
+import { IKImage } from 'imagekitio-react'; 
+
 function testinomials() {
   return (
     <section class="section-testimonials">
@@ -28,10 +30,18 @@ function testinomials() {
       <div class="gallery">
         {Object.keys(FoodGallery).map((key) => {
           return (
-            <figure class="gallery-item">
-              <img
-                src={FoodGallery[key]}
-                alt={"Photo of beautifully arranged food" + { key }}
+            <figure class="gallery-item"> 
+              <IKImage
+              path={FoodGallery[key]}
+              className="hero-img"
+              alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+              loading="lazy"
+              lqip={{ active: true }}
+              transformation={[
+                { quality: 50 },
+                { width: 300, devicePixelRatio: '2' },
+                { format: 'webp' },
+              ]}
               />
             </figure>
           );

@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
-
-import heroImage from "../../img/hero.png"
+import { IKImage } from 'imagekitio-react'; 
 import customer_Images from "./customerImages"
 function Hero() {
   return (
@@ -38,12 +37,20 @@ function Hero() {
           </div>
         </div>
         <div className="hero-img-box">
-          <img 
-            src={heroImage}
-            loading="lazy"
-            className="hero-img"
-            alt="Woman enjoying food, meals in storage container, and food bowls on a table"
-          />
+        <IKImage
+        path="/Images/hero.png"
+        className="hero-img"
+        alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+        loading="lazy"
+        lqip={{ active: true }}
+        transformation={[
+          { quality: 75 },
+          { width: 600 },
+          { width: 300, devicePixelRatio: '2' },
+          { format: 'webp' },
+        ]}
+    />
+          
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import Signup from './components/signup/signup'
 import AllComponents from "./components/AllComponents";
 import Login from "./components/login/login";
 import OTP from "./components/forget/otp" 
+import { IKContext } from 'imagekitio-react';
 import NewPassword from "./components/forget/newPassword";
 import { useEffect, useState, createContext, useContext } from 'react'
 import {
@@ -40,7 +41,7 @@ function App() {
     <>
       {/* <Suspense fallback={<div>Loading...</div>}> */}
       <OmniFoodContext.Provider value={{ currentUser, setCurrentUser, setReloadUser, reloadUser }}>
-
+      <IKContext publicKey="public_JRD4uaXDOqe8J3U0g/Ulzin4Z74=" urlEndpoint="https://ik.imagekit.io/qtg6maoxw/">
         <Routes>
           <Route path="/" element={<AllComponents />} />
           <Route path="/login" element={<Login />} />
@@ -49,6 +50,8 @@ function App() {
           <Route path="/forgotPassword" element={<OTP/>}/> 
           <Route path="/reset-password" element={<NewPassword/>}/>
         </Routes>
+      </IKContext>
+        
       </OmniFoodContext.Provider>
       {/* </Suspense> */}
     </>
