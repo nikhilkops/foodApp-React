@@ -29,8 +29,7 @@ function App() {
         const data = cUser.data;
         if (!data) { setCurrentUser(null) }
         setCurrentUser(data);
-      } catch (err) {
-        console.log(err)
+      } catch (err) { 
         setCurrentUser(null);
       }
     };

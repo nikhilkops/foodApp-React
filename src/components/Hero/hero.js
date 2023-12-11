@@ -22,10 +22,7 @@ function Hero() {
             <div className="delivered-imgs">
               {Object.values(customer_Images).map((value, index) => {
                 return (
-                  <>
-                  {console.log(value)}
-                  
-
+                  <> 
                   <IKImage
                     path={value}
                     className="customer_image"
