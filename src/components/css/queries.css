@@ -66,11 +66,7 @@ using pixel will not adjust to useer font size setting and also not to user zomm
     grid-template-columns: 1fr;
   }
 
-  .pricing-plan--complete::after {
-    top: 7%;
-    right: -9%;
-
-  }
+   
 }
 
 /* ************************ */

@@ -249,7 +249,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  padding-left: 9rem;
+ 
 }
 
 .list-item {
