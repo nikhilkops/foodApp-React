@@ -15,31 +15,7 @@ function Pricing() {
   const { currentUser } = useOmniFooodContext();
   const [isLoading, setLoading] = useState(false)
   const handlePricingButton = async (e) => {
-    try {
-      toast.info(
-        <>
-          <ul>
-            <li>Select Card 41111111111111</li>
-            <li>Exp Date: Any</li>
-            <li>CVV: Any</li>
-            <li>Continue Without Saving Card</li>
-            <li>Redirect to bank Page</li>
-            <li>Click Success</li>
-          </ul>
-        </>,
-        {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 10000,
-          closeOnClick: false, // Prevents closing on click
-          style: {
-            fontSize: '18px',
-            width: 'auto',
-            height: 'auto'
-          },
-        }
-      );
-
-
+    try { 
       if (!currentUser) {
         toast.error(`User is not Logged In`, {
           position: toast.POSITION.TOP_CENTER,
@@ -49,8 +25,7 @@ function Pricing() {
           }
         });
       }
-
-
+ 
       const { name, lastName, email, location, _id } = currentUser.user;
       setLoading(true)
       const documentID = e.target.id;
