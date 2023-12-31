@@ -36,7 +36,7 @@
 .successful-container .paper {
   border: 2px solid black;
   background: #ffffff;
-  height: 49rem;
+  height: fit-content;
   position: absolute;
   z-index: 2;
   margin: 0 12px;
@@ -47,29 +47,11 @@
 
 .successful-container .main-contents {
   margin: 0 12px;
-  padding: 24px;
+  padding: 1.6rem;
 }
 
-.successful-container .jagged-edge {
-  position: relative;
-  height: 20px;
-  width: 100%;
-  margin-top: -1px;
-}
-
-.successful-container .jagged-edge:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(45deg, transparent 33.333%, #ffffff 33.333%, #ffffff 66.667%, transparent 66.667%),
-    linear-gradient(-45deg, transparent 33.333%, #ffffff 33.333%, #ffffff 66.667%, transparent 66.667%);
-  background-size: 16px 40px;
-  background-position: 0 -20px;
-}
+ 
+ 
 
 .successful-container .success-icon {
   text-align: center;
@@ -166,4 +148,15 @@
   100% {
     -ms-transform: translateY(0%);
   }
+}
+.return-page
+{
+  border:2px solid orange   !important; 
+}
+.btn-return-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.4rem ;
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './Sucessful.css';
+import { NavLink } from "react-router-dom";
 
-function Sucessfull() {
+
+function Sucessfull() { 
   const searchQuery = JSON.parse(useSearchParams()[0].get("data"));  
   return (
     <div className="successful-container">
@@ -25,9 +27,13 @@ function Sucessfull() {
                 <div className="order-number-label">Payment Method: { searchQuery.paymentMethod}</div>
    
               </div>
+              <div className='btn-return-container'>
+                 
+                <NavLink to='/' className="btn btn--outline return-page"> Return to HomePage</NavLink>
+              </div>
               <div className="order-footer">Thank you for choosing OmniFood!</div>
             </div>
-            <div className="jagged-edge"></div>
+ 
           </div>
         </div>
       </div>
