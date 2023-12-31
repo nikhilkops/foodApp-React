@@ -5,6 +5,8 @@ import { IKImage } from 'imagekitio-react';
 
  
 import MealCard from "./MealCard";
+ 
+
 function Meals() {
   return (
     <section class="section-meals">
@@ -18,6 +20,7 @@ function Meals() {
       <div class="container grid grid--3-cols margin-bottom-md">
         {Object.keys(MealCard).map((key) => {
           const mealCard = MealCard[key];
+           
           return (
             <div class="meal">
             
@@ -46,7 +49,7 @@ function Meals() {
                     );
                   })}
                 </div>
-                <p class="meal-title">Japanese Gyozas</p>
+                <p class="meal-title">{mealCard.title}</p>
                 <ul class="meal-attributes">
 
                 {
