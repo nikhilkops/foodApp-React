@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./login.css";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -55,17 +55,20 @@ function Login() {
     let value = e.target.value;
     setPassword(value);
   }
-  if (currentUser) {
-    toast.success(` User is already logged in !`, {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 2500, // milliseconds
-      style: {
-        fontSize: '18px', // Set the desired font size
-      }
-    });
-
-    navigate("/")
-  }
+  useEffect(()=>{
+    
+    if (currentUser) {
+      toast.success(` User is already logged in !`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
+        }
+      });
+  
+      navigate("/")
+    }
+  })
   return (
     <>
       <>
