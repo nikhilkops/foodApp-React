@@ -7,8 +7,11 @@ import { useState } from "react";
 import axios from "axios";
 import customFetch from "../../utils/customFetch";
 import logo from "../../img/omnifood-logo-white.png";
+import { useOmniFooodContext } from "../../App"
 
 function Signup() {
+  const { currentUser } = useOmniFooodContext();
+
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -73,7 +76,7 @@ function Signup() {
           fontSize: '18px', // Set the desired font size
         }
       });
-      navigate('/')
+      navigate('/login')
     } catch (error) {
       toast.error(error?.response?.data?.message, {
         position: toast.POSITION.TOP_CENTER,
@@ -97,33 +100,20 @@ function Signup() {
     }));
   };
 
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(async function (position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        // Using a free reverse geocoding service like Nominatim
-        const reverseGeocodingURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
-
-        try {
-          const response = await axios.get(reverseGeocodingURL);
-          const data = response?.data;
-          const city = data?.address?.city;
-
-          setFormData(prevFormData => ({
-            ...prevFormData,
-            location: city,
-          }));
-        } catch (error) {
-          console.error("Error fetching city data: " + error);
+  useEffect(() => { 
+    if (currentUser) {
+      toast.success(` User is already logged in !`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500, // milliseconds
+        style: {
+          fontSize: '18px', // Set the desired font size
         }
       });
-    } else {
-      console.log("Geolocation is not available in this browser.");
+  
+      navigate("/")
     }
-  }, []);
-
+  });
+   
   return (
     <>
       {" "}
